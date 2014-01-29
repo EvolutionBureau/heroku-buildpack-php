@@ -10,13 +10,13 @@ curl -L "https://github.com/andreiz/php-memcached/archive/v1.0.2.tar.gz" \
     
 
 mkdir -p /app/vendor/libmemcached
-curl -L "https://s3-eu-west-1.amazonaws.com/chh-heroku-buildpack-php/package/libmemcached-1.0.17.tgz" \
-    | tar xzv -C /app/vendor/libmemcached
+curl -L "https://launchpad.net/libmemcached/1.0/1.0.17/+download/libmemcached-1.0.17.tar.gz" \
+    | tar xzv -C /app/vendor
 
-cd php-memcached-${php_memcached_version}
+cd php-memcached-1.0.2
 /app/vendor/php/bin/phpize
 ./configure --with-php-config=/app/vendor/php/bin/php-config \
-            --with-libmemcached-dir=/app/vendor/libmemcached
+            --with-libmemcached-dir=/app/vendor/libmemcached-1.0.17
             --enable-memcached
 
 make
