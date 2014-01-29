@@ -5,13 +5,13 @@ php_memcached_version=40ce9b4633de5d70f056e4d434d9b064263348d0
 #curl -L "https://github.com/andreiz/php-memcached/archive/${php_memcached_version}.tar.gz" \
 #    | tar xzv
 
-curl -L "https://github.com/andreiz/php-memcached/archive/v1.0.2.tar.gz" \
-    | tar xzv
+wget "https://github.com/andreiz/php-memcached/archive/v1.0.2.tar.gz" \
+tar xzvf v1.0.2.tar.gz
     
 
 mkdir -p /app/vendor/libmemcached
-curl -L "https://launchpad.net/libmemcached/1.0/1.0.17/+download/libmemcached-1.0.17.tar.gz" \
-    | tar xzv -C /app/vendor
+wget "https://launchpad.net/libmemcached/1.0/1.0.17/+download/libmemcached-1.0.17.tar.gz" \
+tar xzvf -C /app/vendor libmemcached-1.0.17.tar.gz
 
 cd php-memcached-1.0.2
 /app/vendor/php/bin/phpize
