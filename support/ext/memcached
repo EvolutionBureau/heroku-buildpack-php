@@ -5,20 +5,20 @@ php_memcached_version=40ce9b4633de5d70f056e4d434d9b064263348d0
 #curl -L "https://github.com/andreiz/php-memcached/archive/${php_memcached_version}.tar.gz" \
 #    | tar xzv
 
-wget "https://github.com/andreiz/php-memcached/archive/v1.0.2.tar.gz" \
+wget "https://github.com/andreiz/php-memcached/archive/v1.0.2.tar.gz"
 tar xzvf v1.0.2.tar.gz
     
 
-mkdir -p /app/vendor/libmemcached
-wget "https://launchpad.net/libmemcached/1.0/1.0.17/+download/libmemcached-1.0.17.tar.gz" \
-tar xzvf -C /app/vendor libmemcached-1.0.17.tar.gz
+#mkdir -p /app/vendor/libmemcached
+#wget "https://launchpad.net/libmemcached/1.0/1.0.17/+download/libmemcached-1.0.17.tar.gz"
+#tar xzvf -C /app/vendor libmemcached-1.0.17.tar.gz
 
-cd php-memcached-1.0.2
-/app/vendor/php/bin/phpize
-./configure --with-php-config=/app/vendor/php/bin/php-config \
+#cd php-memcached-1.0.2
+#/app/vendor/php/bin/phpize
+#./configure --with-php-config=/app/vendor/php/bin/php-config \
             --with-libmemcached-dir=/app/vendor/libmemcached-1.0.17
             --enable-memcached
 
-make
-cp modules/memcached.so "$EXT_DIR/memcached.so"
-echo "extension=memcached.so" > "$PREFIX/etc/conf.d/memcached.ini"
+#make
+#cp modules/memcached.so "$EXT_DIR/memcached.so"
+#echo "extension=memcached.so" > "$PREFIX/etc/conf.d/memcached.ini"
