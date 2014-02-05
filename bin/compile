@@ -316,7 +316,7 @@ echo "       mongo"
 fetch_package "ext/$(php_api_version)/php-mongo" "/app/vendor/php" | indent
 echo "       memcached"
 # fetch_package "ext/$(php_api_version)/php-memcached" "/app/vendor/php" | indent
-cd /app/vendor/php/lib/php/extensions/no-debug-non-zts-20121212 && curl -O https://s3.amazonaws.com/evb-buildpack-binaries/memcached.so
+cd /app/vendor/php/lib/php/extensions/no-debug-non-zts-$(php_api_version) && curl -O https://s3.amazonaws.com/evb-buildpack-binaries/memcached.so
 echo "extension=memcached.so" > "/app/vendor/php/etc/conf.d/memcached.ini"
 
 
