@@ -300,7 +300,7 @@ fetch_engine_package php "$PHP_VERSION" /app/vendor/php | indent
 test ! -d ".profile.d" && mkdir -p .profile.d || true
 
 cat > ".profile.d/php.sh" <<SH
-export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/app/bin:/app/vendor/nginx/sbin:/app/vendor/php/sbin:/app/vendor/php/bin:/app/vendor/bin:\$PATH
+export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/app/bin:/app/vendor/nginx/sbin:/app/vendor/php/sbin:/app/vendor/php/bin:/app/vendor/bin:/app/vendor/ext/bin:/app/vendor/ext/lib:/app/vendor/ext/include:/app/vendor/ext/share:\$PATH
 export HEROKU_BUILD_TIME=$(date +%Y%m%d%H%M%S)
 SH
 
@@ -316,6 +316,12 @@ echo "       mongo"
 fetch_package "ext/$(php_api_version)/php-mongo" "/app/vendor/php" | indent
 echo "       memcached"
 # fetch_package "ext/$(php_api_version)/php-memcached" "/app/vendor/php" | indent
+mkdir -p /app/vendor/ext
+# Libmemcached
+curl -o /app/vendor/libmemcached.tgz https://s3.amazonaws.com/evb-buildpack-binaries/libmemcached.tgz
+tar xzvf /app/vendor/libmemcached.tgz /app/vendor/ext
+
+# Extension
 curl -o /app/vendor/php/lib/php/extensions/no-debug-non-zts-20121212/memcached.so https://s3.amazonaws.com/evb-buildpack-binaries/memcached.so
 echo "extension=memcached.so" > "/app/vendor/php/etc/conf.d/memcached.ini"
 
