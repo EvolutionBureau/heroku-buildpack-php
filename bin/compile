@@ -316,8 +316,8 @@ echo "       mongo"
 fetch_package "ext/$(php_api_version)/php-mongo" "/app/vendor/php" | indent
 echo "       memcached"
 # fetch_package "ext/$(php_api_version)/php-memcached" "/app/vendor/php" | indent
-cd $EXT_DIR && curl -O https://s3.amazonaws.com/evb-buildpack-binaries/memcached.so
-echo "extension=memcached.so" > "$PREFIX/etc/conf.d/memcached.ini"
+cd /app/vendor/php/lib/php/extensions/no-debug-non-zts-20121212 && curl -O https://s3.amazonaws.com/evb-buildpack-binaries/memcached.so
+echo "extension=memcached.so" > "/app/vendor/php/etc/conf.d/memcached.ini"
 
 
 if [ -f "$BUILD_DIR/composer.json" ] && package_newrelic_enabled; then
