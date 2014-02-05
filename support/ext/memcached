@@ -1,32 +1,3 @@
-# #!/usr/bin/env bash
-
-# php_memcached_version=40ce9b4633de5d70f056e4d434d9b064263348d0
-
-# #curl -L "https://github.com/andreiz/php-memcached/archive/${php_memcached_version}.tar.gz" \
-# #    | tar xzv
-
-# mkdir -p /app/vendor
-# cd /app/vendor/
-# wget https://github.com/andreiz/php-memcached/archive/v1.0.2.tar.gz
-# tar xzvf v1.0.2.tar.gz
-
-# cd /app/vendor/
-# wget https://launchpad.net/libmemcached/1.0/1.0.17/+download/libmemcached-1.0.17.tar.gz
-# tar xzvf libmemcached-1.0.17.tar.gz
-# cd libmemcached-1.0.17.tar.gz
-# ./configure --prefix=/app/vendor/libmemcached-1.0.16/headers
-# make
-# make install
-
-# cd /app/vendor/php-memcached-1.0.2
-# /app/vendor/php/bin/phpize
-# ./configure --with-php-config=/app/vendor/php/bin/php-config \
-#             --with-libmemcached-dir=/app/vendor/libmemcached-1.0.16/headers \
-#             --enable-memcached
-
-# make
-# cp modules/memcached.so "$EXT_DIR/memcached.so"
-
 cd $EXT_DIR
 curl -O https://s3.amazonaws.com/evb-buildpack-binaries/memcached.so
 echo "extension=memcached.so" > "$PREFIX/etc/conf.d/memcached.ini"
