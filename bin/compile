@@ -320,10 +320,10 @@ echo "       memcached"
 echo "Current directory:"
 pwd
 
-mkdir -p /app/vendor/ext
+mkdir -p vendor/ext
 # Libmemcached
-curl -o /app/vendor/ext/libmemcached.tgz https://s3.amazonaws.com/evb-buildpack-binaries/libmemcached.tgz
-tar xzvf /app/vendor/ext/libmemcached.tgz -C /app/vendor/ext
+curl -o libmemcached.tgz https://s3.amazonaws.com/evb-buildpack-binaries/libmemcached.tgz
+tar xzvf libmemcached.tgz -C vendor/ext
 
 # Extension
 curl -o /app/vendor/php/lib/php/extensions/no-debug-non-zts-20121212/memcached.so https://s3.amazonaws.com/evb-buildpack-binaries/memcached.so
